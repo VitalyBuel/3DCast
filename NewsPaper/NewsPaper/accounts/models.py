@@ -59,7 +59,7 @@ class Order(models.Model):
 class ProductOrder(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    amount = models.IntegerField(default=1)
+    amount = models.IntegerField(default=1.0)
 
     def product_sum(self):
         product_price = self.product.price
