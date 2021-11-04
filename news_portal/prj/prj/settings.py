@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
     'django.contrib.flatpages',
+
+    'newapp',
 ]
 
 SITE_ID = 1
@@ -62,7 +64,9 @@ ROOT_URLCONF = 'prj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'newapp/templates/news'),
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
