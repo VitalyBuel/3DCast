@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for new in news %}
+<hr>
+<p>{{ new.dateCreation }}</p>
+<p><h2>{{ new.title }}</h2></p>
+<a href="{% url 'detail' pk=new.pk %}">News url</a>
+<p>{{ new.preview }} </p>
+</hr>
+{% endfor %}
+</body>
+</html>
