@@ -29,10 +29,7 @@ class Category(models.Model):
 
     def __str__(self):
         return '{}'.format(self.name)
-<<<<<<< HEAD
 
-=======
->>>>>>> 4c0ec9193bc7e3f3fbbc097d6ec02758360cad75
 
 class Post(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
@@ -62,17 +59,11 @@ class Post(models.Model):
         self.save()
 
     def preview(self):
-<<<<<<< HEAD
-        return self.text[0:123] + '...'
+        return self.text[0:50] + '...'
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'pk': self.pk})
-=======
-        return self.text[0:50] + '...'
 
-    def __str__(self):
-        return '{}'.format(self.title)
->>>>>>> 4c0ec9193bc7e3f3fbbc097d6ec02758360cad75
 
 
 class PostCategory(models.Model):
