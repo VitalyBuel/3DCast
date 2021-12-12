@@ -1,13 +1,30 @@
 {% extends 'default.html' %}
 
+<<<<<<< HEAD
 {% block title %}
 <p>{{ new.dateCreation }}</p>
 <hr>
 {% if is_paginated %}
+=======
+
+{% block title %}
+<p>{{ new.dateCreation }}</p>
+<hr>
+<div align="center"><h1>{{ new.title | censor }}</h1></div>
+<p align="justify">{{ new.text | censor }}</p>
+{% if is_paginated %}
+
+    <!-- Если доступна предыдущая страница, то даём ссылку на неё и самую первую страницу -->
+>>>>>>> 531554b77c8dafecbdc65beff8ecd24e00865fc6
     {% if page_obj.has_previous %}
         <a href="?page=1">First</a>
         <a href="?page={{ page_obj.previous_page_number }}"><<<</a>
     {% endif %}
+<<<<<<< HEAD
+=======
+
+    <!-- Показываем только текущую страницу и ближайшие к ней, чтобы список не тянулся и не захламлял страницу -->
+>>>>>>> 531554b77c8dafecbdc65beff8ecd24e00865fc6
     {% for num in page_obj.paginator.page_range %}
         {% if page_obj.number == num %}
             <a>{{ num }}</a>
@@ -15,9 +32,18 @@
             <a href="?page={{ num }}">{{ num }}</a>
         {% endif %}
     {% endfor %}
+<<<<<<< HEAD
+=======
+
+    <!-- Если есть следующая страница, то даём ссылку на неё и на самую последнюю страницу -->
+>>>>>>> 531554b77c8dafecbdc65beff8ecd24e00865fc6
     {% if page_obj.has_next %}
         <a href="?page={{ page_obj.next_page_number }}">>>></a>
         <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
     {% endif %}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 531554b77c8dafecbdc65beff8ecd24e00865fc6
 {% endif %}
 {% endblock %}
