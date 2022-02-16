@@ -1,9 +1,0 @@
-{% extends 'default.html' %}
-{% load custom_filters %}
-
-{% block title %}
-<p>{{ new.dateCreation }}</p>
-<hr>
-<div align="center"><h1>{{ new.title | censor }}</h1></div>
-<p align="justify">{{ new.text | censor }}</p>
-{% endblock %}
