@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title%}
+    {{ category.title }}
+{% endblock %}
+
 {% block sidebar %}
 {% include 'inc/_sidebar.html' %}
 {% endblock %}
@@ -8,7 +12,7 @@
 {% for i in news %}
 <div class="card mb-3">
     <div class="card-header">
-        Category: <a href="{% url 'category' i.category.pk %}">{{ i.category }}</a>
+        Category: <a href="{% url 'category' i.pk %}">{{ i.category }}</a>
     </div>
     <div class="card-body">
         <div class="media">
@@ -31,4 +35,10 @@
 </div>
 {% endfor %}
 {% endblock %}
+
+
+
+
+
+
 
