@@ -62,6 +62,7 @@ class PostCategory(models.Model):
 class Comment(models.Model):
     commentPost = models.ForeignKey(Post, on_delete=models.CASCADE)
     commentUser = models.ForeignKey(User, on_delete=models.CASCADE)
+    dateCreation = models.DateTimeField(auto_now_add=True)
     text = models.TextField()
     rating = models.SmallIntegerField(default=0)
 
