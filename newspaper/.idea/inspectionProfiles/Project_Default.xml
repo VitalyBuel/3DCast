@@ -6,7 +6,6 @@
         <list>
           <option value="django.db.models.fields.related.OneToOneField.comment_set" />
           <option value="prj.newapp.models.Author.post_set" />
-          <option value="django.db.models.fields.related.ForeignKey.username" />
         </list>
       </option>
     </inspection_tool>

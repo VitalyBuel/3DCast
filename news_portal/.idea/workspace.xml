@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="bace2e92-cce3-4503-9cea-e2c6688db2e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/simplapp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NewsPaper/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NewsPaper/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NewsPaper/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NewsPaper/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/news_portal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/news_portal.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/templates/product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/news/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/news/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/news/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/news/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../newspaper/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../newspaper/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../newspaper/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../newspaper/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
