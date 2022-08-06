@@ -1,0 +1,160 @@
+from news.models import *
+
+1. Создать двух пользователей (с помощью метода User.objects.create_user('username')).
+>>> u1 = User.objects.create_user('Vtaly')
+>>> u1
+<User: Vtaly>
+>>> u1 = User.objects.create_user('Vitaly')
+>>> u1
+<User: Vitaly>
+>>> u2 = User.objects.create_user('Vika')
+>>> u2
+<User: Vika>
+>>> u3 = User.objects.get(username='Vtaly')
+>>> u3
+<User: Vtaly>
+>>> u3.delete()
+(1, {'auth.User': 1})
+
+2. Создать два объекта модели Author, связанные с пользователями.
+>>> a1 = Author.objects.create(authorUser=u1)
+>>> a1
+<Author: Author object (1)>
+>>> a2 = Author.objects.create(authorUser=u2)
+
+3. Добавить 4 категории в модель Category.
+>>> c1 = Category.objects.create(name='IT')
+>>> c1
+<Category: IT>
+>>> c2 = Category.objects.create(name='Politics')
+>>> c2
+<Category: Politics>
+>>> c3 = Category.objects.create(name='Science')
+>>> c3
+<Category: Science>
+>>> с4 = Category.objects.create(name='Art')
+>>> c4
+<Category: Art>
+>>> c = Category.objects.all()
+>>> c
+<QuerySet [<Category: IT>, <Category: Politics>, <Category: Science>, <Category: Art>]>
+
+4. Добавить 2 статьи и 1 новость.
+>>> p1 = Post.objects.create(author=a1, categoryType='NW', title='Беларусы с завтрашнего дня смогут снова сдавать TOEFL дистанционно', text='Компания Ed
+ucational Testing Service (ETS), проводящая международный экзамен по английскому языку TOEFL, снова разрешит гражданам Беларуси и России сдавать его с 4
+ августа в удалённом формате.')
+>>> p1.title
+'Беларусы с завтрашнего дня смогут снова сдавать TOEFL дистанционно'
+>>> p2 = Post.objects.create(author=a1, categoryType='AR', title='«Проиграют все»: чипмейкер Apple объяснил, чем грозит война между Китаем и Тайванем',
+text='На Тайване размещается самый передовой в мире завод по производству микропроцессоров, принадлежащий компании TSMC. И этот завод может выйти из стр
+оя в случае нападения на остров Китая, предупредил в недавнем интервью CNN председатель правления чипмейкера Марк Лю. Он может пострадать, поскольку для
+ него критическую важность имеют бесперебойные поставки из-за рубежа.')
+>>> p2.categoryType
+'AR'
+>>> p3 = Post.objects.create(author=a2, categoryType='AR', title='Микробная «темная материя» вулканических пещер Гавайев', text='Лавовые пещеры, тоннели
+ и фумаролы – образования, возникающие при остывании лавы после извержения вулкана. В таких образованиях ранее уже фиксировали высокое микробное разнооб
+разие. Чтобы лучше изучить факторы, структурирующие разнообразие бактериальных сообществ в вулканических экосистемах, исследователи сравнили как влияет
+на него возраст таких образований.')
+>>> p3.title
+'Микробная «темная материя» вулканических пещер Гавайев'
+
+5. Присвоить им категории (как минимум в одной статье/новости должно быть не меньше 2 категорий).
+>>> p1.postCategory.add(c1)
+>>> p1.postCategory.add(c2)
+>>> p2.postCategory.add(c1)
+>>> p2.postCategory.add(c3)
+>>> p3.postCategory.add(c3)
+>>> p3.postCategory.add(c4)
+
+6. Создать как минимум 4 комментария к разным объектам модели Post (в каждом объекте должен быть как минимум один комментарий).
+>>> cm1 = Comment.objects.create(commentPost=p1, commentUser=u1, text='Nice')
+>>> cm1.text
+'Nice'
+>>> cm2 = Comment.objects.create(commentPost=p2, commentUser=u1, text='I like it.')
+>>> cm3 = Comment.objects.create(commentPost=p1, commentUser=u2, text='I need it.')
+>>> cm4 = Comment.objects.create(commentPost=p3, commentUser=u2, text='Cool!')
+
+7. Применяя функции like() и dislike() к статьям/новостям и комментариям, скорректировать рейтинги этих объектов.
+>>> p1.like()
+>>> p1.like()
+>>> p2.dislike()
+>>> p3.like()
+>>> p3.like()
+>>> p3.dislike()
+>>> cm1.like()
+>>> cm2.like()
+>>> cm2.like()
+>>> cm3.dislike()
+>>> cm4.like()
+>>> cm4.dislike()
+
+8. Обновить рейтинги пользователей.
+>>> a1.update_rating()
+>>> a2.update_rating()
+>>> a1.ratingAuthor
+6
+>>> a2.ratingAuthor
+2
+
+9. Вывести username и рейтинг лучшего пользователя (применяя сортировку и возвращая поля первого объекта).
+>>> lp = Author.objects.order_by('-ratingAuthor')[:1]
+>>> lp
+<QuerySet [<Author: Author object (1)>]>
+>>> for i in lp:
+...     i.authorUser.username
+...     i.ratingAuthor
+...
+'Vitaly'
+6
+
+10. Вывести дату добавления, username автора, рейтинг, заголовок и превью лучшей статьи, основываясь на лайках/дислайках к этой статье.
+>>> ls = Post.objects.order_by('-rating')[:1]
+>>> ls
+<QuerySet [<Post: Post object (1)>]>
+>>> for i in ls:
+...     i.dateCreation
+...     i.author.authorUser.username
+...     i.rating
+...     i.title
+...     i.preview()
+...
+datetime.datetime(2022, 8, 3, 11, 51, 19, 955539, tzinfo=datetime.timezone.utc)
+'Vitaly'
+2
+'Беларусы с завтрашнего дня смогут снова сдавать TOEFL дистанционно'
+'Компания Educational Testing Service (ETS), проводящая международный экзамен по английскому языку TOEFL, снова разрешит гра ...'
+
+
+11. Вывести все комментарии (дата, пользователь, рейтинг, текст) к этой статье.
+>>> al = Comment.objects.filter(commentPost=p2)
+>>> al
+<QuerySet [<Comment: Comment object (2)>]>
+>>> for i in al:
+...     i.commentUser
+...     i.dateCreation
+...     i.text
+...     i.rating
+...
+<User: Vitaly>
+datetime.datetime(2022, 8, 3, 12, 26, 44, 501790, tzinfo=datetime.timezone.utc)
+'I like it.'
+2
+
+
+Проверил выводит ли больше одного объекта т.к. к лучшей статье был всего лишь один коментарий
+
+>>> al2 = Comment.objects.filter(commentPost=p1)
+>>> for i in al2:
+...     i.commentUser
+...     i.dateCreation
+...     i.text
+...     i.rating
+...
+<User: Vitaly>
+datetime.datetime(2022, 8, 3, 12, 25, 20, 703437, tzinfo=datetime.timezone.utc)
+'Nice'
+1
+<User: Vika>
+datetime.datetime(2022, 8, 3, 12, 27, 39, 735155, tzinfo=datetime.timezone.utc)
+'I need it.'
+-1
