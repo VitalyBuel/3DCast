@@ -1,9 +1,8 @@
-from django.contrib import admin
 from django.urls import path
-from news.views import index
-from .models import Post
+from .views import index, detail
 
 
 urlpatterns = [
-    path('index', index)
+    path('news/', index, name='index'),
+    path('news/<int:id>', detail, name='detail'),
 ]
