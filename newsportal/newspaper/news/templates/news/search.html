@@ -1,0 +1,15 @@
+{% extends "default.html" %}
+
+{% block content %}
+    <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+    <hr>
+    <hr>
+    {% for obj in filter.qs %}
+        {{ obj.title }} {{ obj.dateCreation }}<br />
+    <p class="link-read-post"><a href="{{ obj.get_absolute_url }}"> Read more...</a></p>
+    <hr>
+    {% endfor %}
+{% endblock %}
