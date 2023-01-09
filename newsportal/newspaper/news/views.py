@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
-
+from django.core.mail import send_mail
 from .filters import PostFilter
 from .forms import NewsForm, ProfileUserForm
 from .models import *
@@ -45,6 +45,14 @@ class NewsCreate(PermissionRequiredMixin, CreateView):
     def form_valid(self, form):
         post = form.save(commit=False)
         post.categoryType = 'NW'
+
+        send_mail(
+            subject=post.title,
+            message=post.text,
+            from_email='vitaly.buel@yandex.ru',
+            recipient_list=['vitalybuel@gmail.com', ]
+        )
+
         return super().form_valid(form)
 
 

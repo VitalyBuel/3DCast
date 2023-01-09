@@ -1,6 +1,7 @@
 {% extends 'default.html' %}
 {% load custom_filters %}
 
+
 {% block content %}
 {% for news in page_obj %}
 <p><b>{{ news.title }}</b><br>{{ news.dateCreation }}</p>
