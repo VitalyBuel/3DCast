@@ -46,11 +46,13 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
 
-    'news',
+    'news.apps.NewsConfig',
     'django_filters',
     'sign',
     'protect',
     'dotenv',
+    'django_apscheduler',
+
 
     'allauth',
     'allauth.account',
@@ -159,6 +161,7 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
 SITE_ID = 1
+SITE_URL = 'http://127.0.0.1:8000'
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
@@ -173,3 +176,8 @@ EMAIL_PORT = 465
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
+
+
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+APSCHEDULER_RUN_NOW_TIMEOUT = 25

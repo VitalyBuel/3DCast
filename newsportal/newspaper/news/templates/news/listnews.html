@@ -6,6 +6,9 @@
 {% for news in page_obj %}
 <p><b>{{ news.title }}</b><br>{{ news.dateCreation }}</p>
 <p>{{ news.text|truncatewords:20 }}</p>
+{% for category in news.postCategory.all %}
+    <a href="{% url 'category_list' category.id %}">{{ category }}</a>
+{% endfor %}
 <p class="link-read-post"><a href="{{ news.get_absolute_url }}"> Read more...</a></p>
 <hr>
 {% endfor %}

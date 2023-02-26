@@ -3,7 +3,7 @@
 
 {% block content %}
 <h2 align="center">{{ new.title }}</h2>
-<p align="center"><i>{{ new.dateCreation | date:'d M Y' }}</i></p>
+<p align="center"><i>{{ new.dateCreation | date:'d M Y' }}</i>
 <hr>
 <div align="center">{{ new.text | censor}}</div>
 {% endblock %}
