@@ -48,7 +48,7 @@ def notify_about_new_post(sender, instance, **kwargs):
 def my_job():
     #  Your job processing logic here...
     today = datetime.datetime.now()
-    last_week = today - datetime.timedelta(seconds=30)
+    last_week = today - datetime.timedelta(days=7)
     posts = Post.objects.filter(dateCreation__gte=last_week)
     categories = set(posts.values_list('postCategory__name', flat=True))
     subscribers = set(Category.objects.filter(name__in=categories).values_list('subscribers__email', flat=True))
