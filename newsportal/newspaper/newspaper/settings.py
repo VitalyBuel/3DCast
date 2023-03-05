@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'protect',
     'dotenv',
     'django_apscheduler',
+    'celery',
+    'redis',
 
 
     'allauth',
@@ -181,3 +183,12 @@ DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
 
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 APSCHEDULER_RUN_NOW_TIMEOUT = 25
+
+
+CELERY_BROKER_URL = 'redis://default:eZt1WoeT7UhExB4sFhaEfGmoFlFtCQJl@redis-15908.c283.us-east-1-4.ec2.cloud.redislabs.com:15908'
+CELERY_RESULT_BACKEND = 'redis://default:eZt1WoeT7UhExB4sFhaEfGmoFlFtCQJl@redis-15908.c283.us-east-1-4.ec2.cloud.redislabs.com:15908'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
