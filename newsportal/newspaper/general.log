@@ -1,0 +1,19 @@
+2023-03-19 17:37:02,447 -- INFO -- Watching for file changes with StatReloader -- autoreload
+2023-03-19 17:37:43,828 -- INFO -- C:\Users\user\Documents\Projects\Dev\SkillFactory\newsportal\newspaper\news\views.py changed, reloading. -- autoreload
+2023-03-19 17:37:45,368 -- INFO -- Watching for file changes with StatReloader -- autoreload
+2023-03-19 17:38:26,659 -- INFO -- C:\Users\user\Documents\Projects\Dev\SkillFactory\newsportal\newspaper\news\views.py changed, reloading. -- autoreload
+2023-03-19 17:38:28,123 -- INFO -- Watching for file changes with StatReloader -- autoreload
+2023-03-19 17:39:34,573 -- WARNING -- Not Found: /news/delete -- log
+2023-03-19 17:39:34,574 -- WARNING -- "GET /news/delete HTTP/1.1" 404 179 -- basehttp
+2023-03-19 17:40:13,154 -- INFO -- "GET /news/23/delete HTTP/1.1" 200 2336 -- basehttp
+2023-03-19 17:40:18,152 -- INFO -- "POST /news/23/delete HTTP/1.1" 302 0 -- basehttp
+2023-03-19 17:40:18,245 -- INFO -- "GET /news/ HTTP/1.1" 200 5206 -- basehttp
+2023-03-19 17:41:15,047 -- INFO -- "GET / HTTP/1.1" 200 573 -- basehttp
+2023-03-19 17:41:17,022 -- INFO -- "GET /sign/logout/ HTTP/1.1" 200 257 -- basehttp
+2023-03-19 17:41:27,321 -- INFO -- "GET / HTTP/1.1" 302 0 -- basehttp
+2023-03-19 17:41:27,380 -- INFO -- "GET /accounts/login/?next=/ HTTP/1.1" 200 1698 -- basehttp
+2023-03-19 17:41:31,929 -- INFO -- "GET /accounts/google/login/?process=login&next=%2F HTTP/1.1" 200 453 -- basehttp
+2023-03-19 17:41:33,253 -- INFO -- "POST /accounts/google/login/?process=login&next=%2F HTTP/1.1" 302 0 -- basehttp
+2023-03-19 17:41:33,964 -- INFO -- "GET /accounts/google/login/callback/?state=SX79Cc15CN6C&code=4%2F0AWtgzh5HTQaiDr_rI8AxgNxy1pa03yqHj4WFs3lFnUk00ZvOH7jOPZNBFc7F0j_0OHgzGw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=none HTTP/1.1" 302 0 -- basehttp
+2023-03-19 17:41:33,984 -- INFO -- "GET / HTTP/1.1" 200 573 -- basehttp
+2023-03-19 17:41:36,204 -- INFO -- "GET /news/ HTTP/1.1" 200 5206 -- basehttp

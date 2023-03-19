@@ -2,8 +2,10 @@
 {% load custom_filters %}
 
 {% block content %}
-<h2 align="center">{{ new.title }}</h2>
+{% for new in obj %}
+<h2 align="center">{{ obj.title }}</h2>
 <p align="center"><i>{{ new.dateCreation | date:'d M Y' }}</i>
 <hr>
 <div align="center">{{ new.text | censor}}</div>
+{% endfor %}
 {% endblock %}

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Sum
 from django.urls import reverse
+from django.core.cache import cache
 
 
 class Author(models.Model):
@@ -59,7 +60,11 @@ class Post(models.Model):
         return '{} ...'.format(self.text[0:123])
 
     def get_absolute_url(self):
-        return reverse('news', kwargs={'pk': self.pk})
+        return reverse('news', kwargs={'pk': self.pk})#f'/news/{self.id}'
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        cache.delete(f'news-{self.pk}')
 
     def __str__(self):
         return self.title

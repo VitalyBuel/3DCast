@@ -1,0 +1,62 @@
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'style': '%',
+    'formatters': {
+        'error_critical_f': {
+            'format': '%(levelname)s %(asctime)s %(pathname)s %(message)s %(exc_info)s'
+        },
+
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+    },
+    'handlers': {
+        'error_critical': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'error_critical_f',
+            'filename': 'log_info/errors.log',
+        },
+    },
+    'loggers': {
+
+        'django.request': {
+            'for_mail': {
+                'handlers': ['mail_admin'],
+                'level': 'ERROR',
+                'propagate': False,
+            },
+            'for_error_critical': {
+                'handlers': ['error_critical'],
+                'level': 'ERROR',
+            },
+        },
+        'django.server': {
+            'for_mail': {
+                'handlers': ['mail_admin'],
+                'level': 'ERROR',
+                'propagate': False,
+            },
+            'for_error_critical': {
+                'handlers': ['error_critical'],
+                'level': 'ERROR',
+            },
+        },
+        'django.template': {
+            'handlers': ['error_critical'],
+            'level': 'ERROR',
+        },
+        'django.db.backends': {
+            'handlers': ['error_critical'],
+            'level': 'ERROR',
+        },
+
+    },
+}

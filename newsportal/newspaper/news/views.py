@@ -2,9 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from django.core.cache import cache
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView, DetailView
 from django.core.mail import send_mail
 from .filters import PostFilter
 from .forms import NewsForm, ProfileUserForm
@@ -23,6 +24,20 @@ def index(request):
 def detail(request, pk):
     new = Post.objects.get(pk__iexact=pk)
     return render(request, 'news/detail.html', context={'new': new})
+
+
+class NewsDetailView(DetailView):
+    template_name = 'news/detail.html'
+    queryset = Post.objects.all()
+
+    def get_object(self, *args, **kwargs):
+        obj = cache.get(f'news-{self.kwargs["pk"]}', None)
+
+        if not obj:
+            obj = super().get_object(queryset=self.queryset)
+            cache.set(f'news-{self.kwargs["pk"]}', obj)
+
+            return obj
 
 
 def news_search(request):
